@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { INote, Note } from '../note.model';
+import { NotesService,IGist,Gist } from '../notes.service';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-listnotes',
@@ -10,17 +12,21 @@ export class ListnotesComponent implements OnInit {
   notes?: INote[];
   title = "Notes list"
   
-  constructor() { }
+  constructor(protected noteService : NotesService) { }
 
   ngOnInit(): void {
-        
-    this.notes =  this.loadNotes();    
+      this.loadNotes();    
   }
 
-  loadNotes(){
-   return [new Note(1,"My first note"),
-    new Note(2,"My second note"),
-    new Note(3,"My third note"),
-    new Note(4,"My fourth note")];
+  loadNotes(){   
+   this.noteService.loadGist().subscribe({
+    next: (res: HttpResponse<IGist[]>) => {
+      
+      this.notes = res.body?.map( gist => new Note(gist.id,gist.url)) ?? [];      
+    },
+    error: () => {
+      console.log("error")
+    },
+  });        
   }
 }
