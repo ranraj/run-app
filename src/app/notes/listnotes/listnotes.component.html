@@ -9,7 +9,6 @@
     There are {{notes?.length}} notes found.
 </div>
 <div *ngFor="let note of notes;">
-    <a [routerLink]="['/notes/add', { id: note.id }]">{{note.id}}</a>
-     | {{note.content}}
+    <app-notescard noteId={{note.id}} noteUrl={{note.content}}></app-notescard>    
 </div>
            
