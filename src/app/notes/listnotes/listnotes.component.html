@@ -9,6 +9,6 @@
     There are {{notes?.length}} notes found.
 </div>
 <div *ngFor="let note of notes;">
-    <app-notescard noteId={{note.id}} noteUrl={{note.content}}></app-notescard>    
+    <app-notescard [note]="note"></app-notescard>    
 </div>
            

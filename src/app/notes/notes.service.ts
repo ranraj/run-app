@@ -6,13 +6,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class NotesService {
-  resourceUrl = "https://api.github.com/users/ranraj/gists?per_page=2&page=5"
+  resourceUrl = "https://api.github.com/users/ranraj/gists?per_page=2&page=5";
+
   constructor(private http: HttpClient) { }
 
-  loadGist(): Observable<HttpResponse<Gist[]>> {
-     
-    return this.http.get<Gist[]>(this.resourceUrl, { observe: 'response' });
-  }
+    loadGist(): Observable<HttpResponse<IGist[]>> {   
+      return this.http.get<IGist[]>(this.resourceUrl, { observe: 'response' });
+    }
+    getDetails(id: string): Observable<HttpResponse<IGist>> {
+      return this.http.get<IGist>(this.resourceUrl, { observe: 'response' });
+    }
 }
 
 export interface IGist{

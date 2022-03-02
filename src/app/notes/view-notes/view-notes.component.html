@@ -1,0 +1,28 @@
+<div *ngIf="!isEdit">
+    <div>
+        <label for="id">ID : </label>
+        <div>{{note?.id}}</div>
+    </div>
+
+    <div>
+        <label for="id"> Content : </label>
+        <div>{{note?.content}}</div>
+    </div>
+</div>
+<div *ngIf="isEdit">
+    <div>
+        <label for="id">ID : </label>
+        <input [value]="note?.id">
+    </div>
+    
+    <div>
+        <label for="id"> Content : </label>
+        <input [value]="note?.content">
+    </div>
+</div>
+
+<div id="controls">
+    <button ><a [routerLink]="['/notes']">Back</a></button>    
+    <button *ngIf="!isEdit" (click)="edit()">Edit</button>
+    <button *ngIf="isEdit" (click)="save()">Save</button> 
+</div>
