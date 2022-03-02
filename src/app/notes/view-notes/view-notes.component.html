@@ -1,23 +1,23 @@
 <div *ngIf="!isEdit">
     <div>
         <label for="id">ID : </label>
-        <div>{{note?.id}}</div>
+        <div>{{note.id}}</div>
     </div>
 
     <div>
         <label for="id"> Content : </label>
-        <div>{{note?.content}}</div>
+        <div>{{note.content}}</div>
     </div>
 </div>
 <div *ngIf="isEdit">
     <div>
         <label for="id">ID : </label>
-        <input [value]="note?.id">
+        <input [(ngModel)]="note.id">
     </div>
     
     <div>
         <label for="id"> Content : </label>
-        <input [value]="note?.content">
+        <input [(ngModel)]="note.content">
     </div>
 </div>
 

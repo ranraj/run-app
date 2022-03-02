@@ -12,7 +12,7 @@ import { IGist, NotesService } from '../notes.service';
 export class ViewNotesComponent implements OnInit {
 
   id?: string;
-  note?: INote;
+  note: INote = new Note("","");
   isEdit: boolean = false;
 
   constructor( private route: ActivatedRoute,private noteService: NotesService) { }
@@ -22,7 +22,7 @@ export class ViewNotesComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id') ?? "";
     this.noteService.loadGist().subscribe({
       next: (res: HttpResponse<IGist[]>) => {        
-        this.note = res.body?.map( gist => new Note(gist.id,gist.url)).find(n => n.id == this.id);      
+        this.note = res.body?.map( gist => new Note(gist.id,gist.url)).find(n => n.id == this.id) ?? this.note;      
       },
       error: () => {
         console.log("error")

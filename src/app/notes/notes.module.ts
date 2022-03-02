@@ -7,6 +7,7 @@ import { ListnotesComponent } from './listnotes/listnotes.component';
 import { NotescardComponent } from './notescard/notescard.component';
 import { NotesDetailsComponent } from './notes-details/notes-details.component';
 import { ViewNotesComponent } from './view-notes/view-notes.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { ViewNotesComponent } from './view-notes/view-notes.component';
     ListnotesComponent, NotescardComponent, NotesDetailsComponent, ViewNotesComponent,       
   ],
   imports: [    
+    FormsModule,
     CommonModule,
     NotesRoutingModule,                 
   ]  
